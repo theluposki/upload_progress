@@ -1,0 +1,110 @@
+@import url("https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --green: #00ff98;
+  --dark: #242424;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--dark);
+  font-family: sans-serif;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  background-color: #f4f4f4;
+  min-width: 500px;
+  padding: 20px;
+  border-radius: 6px;
+
+  color: var(--dark);
+}
+
+.wrapper h2 {
+  text-align: center;
+  color: var(--green);
+  text-shadow: 0 0 2px var(--dark);
+  margin-bottom: 10px;
+}
+
+#form {
+  border: 2px dashed var(--dark);
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+#form i {
+  font-size: 40px;
+  color: var(--green);
+  cursor: pointer;
+}
+
+#form.dragover {
+  transition: all ease 0.4s;
+  border: 1px dashed var(--green);
+  background-color: #fff;
+}
+
+.upload-file {
+  display: flex;
+  padding: 10px 0;
+  font-size: 16px;
+  gap: 10px;
+}
+
+.upload-file i {
+  color: var(--green);
+  text-shadow: 0 0 0 black;
+  font-size: 35px;
+}
+
+.content {
+  width: 100%;
+}
+
+.content .info {
+  display: flex;
+}
+
+.info span:first-child {
+  flex-grow: 1;
+}
+
+.progress-bar {
+  width: 40%;
+  height: 6px;
+  margin-top: 5px;
+  background-color: var(--green);
+}
+
+.uploaded {
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.uploaded .content i {
+  font-size: 20px;
+}
+
+.uploaded .size {
+  font-size: 13px;
+}
+
+.uploaded::-webkit-scrollbar {
+  width: 0;
+}
