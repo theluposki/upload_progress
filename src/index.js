@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { createServer } from "node:http";
+import { compress } from "../compress.js";
 import { upload } from "./upload.js";
 
 const app = express();
@@ -20,6 +21,8 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     res.status(400).json({ error: "No file received." });
     return;
   }
+
+  await compress(file.path)
 
   res.status(200).json({ success: "OK" });
 });

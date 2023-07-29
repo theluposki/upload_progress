@@ -31,6 +31,11 @@ inputFile.onchange = async (e) => {
 };
 
 const uploadFileWithProgress = async (file) => {
+  if (!file.type.startsWith("image/")) {
+    alert("Selecione um arquivo de imagem válido.");
+    return;
+  }
+
   const formData = new FormData();
   formData.append("file", file);
 
