@@ -14,19 +14,14 @@ export const compress = async (filePath, sizes = sizesDefault) => {
   return new Promise((resolve, reject) => {
     const promises = sizes.map((size) => {
       const outputFilePath = `${filePath}_${size.width}x${size.height}.png`;
-      const ffmpegCommand = `ffmpeg -i ${filePath} -vf "scale=${size.width}:${size.height}:force_original_aspect_ratio=decrease" ${outputFilePath}`;
-
+      const ffmpegCommand = `ffmpeg -i ${filePath} -map_metadata -1 -vf "scale=${size.width}:${size.height}:force_original_aspect_ratio=decrease" ${outputFilePath}`;
       return new Promise((resolve, reject) => {
         exec(ffmpegCommand, (error, stdout, stderr) => {
           if (error) {
-            console.error(
-              `Erro ao converter imagem para ${size.width}x${size.height}: ${error.message}`
-            );
+            console.error(`Error converting image to ${size.width}x${size.height}: ${error.message}`);
             reject(error);
           } else {
-            console.log(
-              `- ${size.width}x${size.height} OK`
-            );
+            console.log(`- ${size.width}x${size.height} OK`);
             resolve(outputFilePath);
           }
         });
